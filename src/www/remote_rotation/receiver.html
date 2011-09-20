@@ -23,8 +23,7 @@
         </style>
         <script src="/socket.io/socket.io.js"> </script>
         <script>
-            var socket = new io.Socket(null, {port: 8080, rememberTransport: true});
-            socket.connect();
+            var socket = io.connect();
 
             var el;
 
@@ -32,7 +31,7 @@
                 el = document.getElementById('img');
             };
 
-            socket.on('message', function( obj ){
+            socket.on('orientation', function( obj ){
 
                 if ( typeof obj !== 'object' ) {
                     var dataObj = JSON.parse(obj);
